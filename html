@@ -1,0 +1,29 @@
+<template>
+    <lightning-card title="Nova Oportunidade" icon-name="action:new_opportunity">
+        <div class="slds-m-around_medium">
+        <lightning-record-edit-form object-api-name="Opportunity" onsuccess={handleSucess}> 
+        <p><lightning-input-field field-name="Name"></lightning-input-field></p>
+        <p><lightning-input-field field-name="StageName"></lightning-input-field></p>
+        <p><lightning-input-field field-name="CloseDate"></lightning-input-field></p>
+
+        <p>
+            <lightning-button label="Criar Oportunidade" type="submit" variant="brand"></lightning-button>
+            <lightning-button label="Cancelar" onclick={apagar}></lightning-button>
+        </p>
+        </lightning-record-edit-form>
+        </div>
+    </lightning-card>
+    <br>
+    <template if:true={visivel}>
+    <lightning-card title="Oportunidade criada com Sucesso" icon-name="standard:opportunity">
+        <div class="slds-m-around_medium">
+          <lightning-record-view-form object-api-name="Opportunity" record-id={recordId}>
+            <lightning-output-field field-name="Name"></lightning-output-field>
+            <lightning-output-field field-name="StageName"></lightning-output-field>
+            <lightning-output-field field-name="CloseDate"></lightning-output-field>
+
+          </lightning-record-view-form>
+        </div>
+    </lightning-card>
+    </template>
+</template>
